@@ -1,21 +1,12 @@
 var express = require('express');
 var router = express.Router();
+const courseController = require('../controllers/courseController')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { 
-    title: 'Instructors TO DO App',
-    message: 'Welcome to the Instructors TO DO list web application.'
-});
-});
+router.get('/', courseController.homePage);
 
 /* /courses */
-router.get('/courses', function(req, res, next){
-  res.render('courses', {
-    title: 'Courses',
-    message: 'Here is the list of all the courses: '
-  })
-})
+router.get('/courses', courseController.coursePage);
 
 // /login
 router.get('/login')
