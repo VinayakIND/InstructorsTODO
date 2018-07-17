@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<% include partials/header %>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+    <p><%= message %></p>
+    <div class="navbar-collapse collapse">							
+        <div class="menu">
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="/" class="active">Home</a></li>
+            <li role="presentation"><a href="#">About Me</a></li>
+            <li role="presentation"><a href="#">Services</a></li>
+            <li role="presentation"><a href="/courses">Courses</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>						
+          </ul>
+        </div>
+      </div>		
+
+<% include partials/footer %>  
+

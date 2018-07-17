@@ -1,4 +1,30 @@
 <% include partials/header %>
     <title><%= title%></title>
-    <p><%= message%></p>
+    <h1>
+        <%= title %>
+    </h1>
+    <p><%= message%></p>  
+    <section>
+        <% for (let i = 0; i < courses.length; i++) { %>
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= courses[i].name %>
+                    </h4>
+                    <h5 class="card-subtitle">
+                        <%= courses[i].type %>
+                    </h5>
+                    <p class="card-text">
+                        <%= courses[i].status %>
+                    </p>
+                    <p class="card-text">
+                        <%= courses[i].rating %>
+                    </p>
+                    <p class="card-text">
+                        <%= courses[i].languages %>
+                    </p>   
+                </div>
+            </div>
+        <% } %>
+    </section>
 <% include partials/footer %>

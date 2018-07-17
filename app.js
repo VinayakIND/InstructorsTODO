@@ -1,4 +1,7 @@
 var createError = require('http-errors');
+//import mongoose 
+const mongoose = require('mongoose');
+
 //express package/module import.
 var express = require('express');
 //To set up path
@@ -10,6 +13,12 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+//for database credentials.
+require('dotenv').config( { path:
+  'variables.env'
+});
+mongoose.connect(process.env.DATABASE);
 
 // view engine setup
 //app.VERB; verb = set, get, post, .....

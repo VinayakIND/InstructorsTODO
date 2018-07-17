@@ -6,7 +6,7 @@ const courseController = require('../controllers/courseController')
 router.get('/', courseController.homePage);
 
 /* /courses */
-router.get('/courses', courseController.coursePage);
+router.get('/courses', courseController.getCourses);
 
 // /login
 router.get('/login')
