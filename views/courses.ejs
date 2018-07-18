@@ -1,30 +1,36 @@
 <% include partials/header %>
-    <title><%= title%></title>
-    <h1>
+    <title style="color: white"><%= title%></title>
+    <h1 style="color: white">
         <%= title %>
     </h1>
-    <p><%= message%></p>  
+    <p style="color: white"><%= message%></p>  
     <section>
-        <% for (let i = 0; i < courses.length; i++) { %>
-            <div class="card" style="width: 20rem;">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <%= courses[i].name %>
-                    </h4>
-                    <h5 class="card-subtitle">
-                        <%= courses[i].type %>
-                    </h5>
-                    <p class="card-text">
-                        <%= courses[i].status %>
-                    </p>
-                    <p class="card-text">
-                        <%= courses[i].rating %>
-                    </p>
-                    <p class="card-text">
-                        <%= courses[i].languages %>
-                    </p>   
-                </div>
-            </div>
-        <% } %>
+            <div class="paper container">
+                   
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="color: white">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Ratings</th>
+                                <th>Language</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <% for (let i = 0; i < courses.length; i++) { %>
+                                  <tr>      
+                                        <td>
+                                                <%= courses[i].Name %>
+                                        </td>
+                                        <td><%= courses[i].type %></td>
+                                        <td><%= courses[i].status %></td>
+                                        <td><%= courses[i].rating %></td>
+                                        <td><%= courses[i].languages %></td>        
+                                    </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                  </div>       
     </section>
 <% include partials/footer %>
