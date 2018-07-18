@@ -1,13 +1,14 @@
 <% include partials/header %>
     <title style="color: white"><%= title%></title>
-    <h1 style="color: white">
+    <h1 style="color: white;">
         <%= title %>
     </h1>
-    <p style="color: white"><%= message%></p>  
+    <p style="color: white; font-size: 25px"><%= message%></p>  
     <section>
             <div class="paper container">
-                   
-                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="color: white">
+                    
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="color: white; font-size: 20px">
+                        <link href="stylesheets/style.css" rel="stylesheet" type="text/css" /> 
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -21,7 +22,7 @@
                                 <% for (let i = 0; i < courses.length; i++) { %>
                                   <tr>      
                                         <td>
-                                                <%= courses[i].Name %>
+                                                <%= courses[i].name %>
                                         </td>
                                         <td><%= courses[i].type %></td>
                                         <td><%= courses[i].status %></td>

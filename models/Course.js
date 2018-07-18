@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 //define the schema for the course model
 //This as well as the other models inherit it from courseSchema.
 const courseSchema = new mongoose.Schema({
-    title: {
+    name: {
         type: String,
         required: "Course name is required."},
     languages: {
