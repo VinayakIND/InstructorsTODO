@@ -26,7 +26,7 @@ exports.googlePre = passport.authenticate('google', {
 });
 
 exports.googlePost = passport.authenticate('google', {
-  successRedirect: '/admin',
+  successRedirect: '/instructor',
   failureRedirect: '/login',
   }
 )
