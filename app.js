@@ -8,6 +8,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const bodyParser = require('body-parser');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -29,6 +31,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//This takes the raw html text and allow us to use them as seperate elements.
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:  true}));
+
 
 //All staic content like images, CSS, JS goes in public. 
 app.use(express.static(path.join(__dirname, 'public')));

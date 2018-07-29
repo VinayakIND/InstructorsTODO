@@ -16,7 +16,8 @@ const courseSchema = new mongoose.Schema({
         type: Number},
     status: {
         type: String,
-        required: "Status is required - open/closed"},
+        //required: "Status is required - open/closed"},
+}
 });
 
 module.exports = mongoose.model('Course', courseSchema);

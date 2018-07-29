@@ -1,0 +1,41 @@
+<% include partials/header %>
+    <title style="color: white"><%= title%></title>
+    <h1 style="color: white;">
+        <%= title %>
+    </h1>
+    <p style="color: white; font-size: 25px"><%= message%></p>  
+    <section>
+            <div class="paper container">
+                    
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="color: white; font-size: 20px">
+                        <link href="stylesheets/style.css" rel="stylesheet" type="text/css" /> 
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Ratings</th>
+                                <th>Language</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <% for (let i = 0; i < courses.length; i++) { %>
+                                  <tr>      
+                                        <td>
+                                                <%= courses[i].name %>
+                                        </td>
+                                        <td><%= courses[i].type %></td>
+                                        <td><%= courses[i].status.toUpperCase() %></td>
+                                        <td><%= courses[i].rating + "/10"%></td>
+                                        <td><%= courses[i].languages %></td>        
+                                        <td>Edit</td>
+                                        <td><a href="/instructor/delete/<%= courses[i]._id %>">Delete</td>
+                                    </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                  </div>       
+    </section>
+<% include partials/footer %>
