@@ -56,6 +56,23 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); 
 
+//Google OAuth authentication.
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy; 
+
+passport.use(new GoogleStrategy ({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
+},
+  (request, accessTokrn, refreshToken, profile, done) => {
+    User.findOrCreate({
+      username: profile.emails[0].value },
+      (err,user) => done(err,user));
+    }
+));
+
+
+
 //All staic content like images, CSS, JS goes in public. 
 app.use(express.static(path.join(__dirname, 'public')));
 

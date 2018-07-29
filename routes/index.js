@@ -24,12 +24,12 @@ router.get('register')
 router.get('/instructor/delete/:id', instructorController.deleteCourse);
 
 //Edit a course.
-router.get('/instructor/edit/:id', instructorController.editCourse);
-router.post('/instructor/edit/:id', instructorController.updateCourse);
+router.get('/instructor/edit/:id', authController.isLoggedIn, instructorController.editCourse);
+router.post('/instructor/edit/:id', authController.isLoggedIn, instructorController.updateCourse);
 
 //Add a new course
-router.get('/add', instructorController.addCourse)
-router.post('/add', instructorController.createCourse)
+router.get('/add', authController.isLoggedIn, instructorController.addCourse)
+router.post('/add', authController.isLoggedIn, instructorController.createCourse)
 
 //Register Login and logout.
 router.get('/register', userController.registerForm);
@@ -43,6 +43,8 @@ router.get('/logout', (req, res) => {
   res.redirect('/courses');
 });
 
+router.get('/google', authController.googlePre);
+router.get('/google/callback', authController.googlePost);
 
 //export the router so other files can use it.
 module.exports = router;
