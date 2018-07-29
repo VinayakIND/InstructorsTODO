@@ -30,7 +30,7 @@
                                         <td><%= courses[i].status.toUpperCase() %></td>
                                         <td><%= courses[i].rating + "/10"%></td>
                                         <td><%= courses[i].languages %></td>        
-                                        <td>Edit</td>
+                                        <td><a href="/instructor/edit/<%= courses[i]._id %>">Edit</td>
                                         <td><a href="/instructor/delete/<%= courses[i]._id %>">Delete</td>
                                     </tr>
                                 <% } %>

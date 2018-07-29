@@ -14,30 +14,30 @@
 
             <div class="card" style="width: 40rem;">
                 <div class="card-body">
-                    <form method="POST" action="/add" style=" color: white">
+                    <form method="POST" style=" color: white">
                         <div class="form-group">
                             <label for="name">Course Name</label>
-                            <input type="text" id="name" name="name" class="input-block" required>
+                            <input type="text" id="name" name="name" class="input-block" required value="<%= course.name %>">
                         </div>
 
                         <div class="form-group">
                             <label for="type">Type</label>
-                            <input type="text" id="type" name="type" class="input-block" required>
+                            <input type="text" id="type" name="type" class="input-block" required value="<%= course.type %>">
                         </div>
 
                         <div class="form-group">
                             <label for="languages">Language</label>
-                            <input type="text" id="languages" name="languages" class="input-block" required>
+                            <input type="text" id="languages" name="languages" class="input-block" required value="<%= course.languages %>">
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <input type="text" id="status" name="status" class="input-block" required>
+                            <input type="text" id="status" name="status" class="input-block" required value="<%= course.status %>">
                         </div>
                         <div class="form-group">
                             <label for="rating">Rating</label>
-                            <input type="text" id="rating" name="rating" class="input-block" required>
+                            <input type="text" id="rating" name="rating" class="input-block" required value="<%= course.rating %>">
                         </div>
-                        <button type="submit" class="btn-secondary btn-block" style="color: black">Add Course</button>
+                        <button type="submit" class="btn-secondary btn-block" style="color: black">Save</button>
                     </form>
                 </div>
             </div>

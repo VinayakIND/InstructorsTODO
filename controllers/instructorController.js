@@ -56,3 +56,27 @@ exports.deleteCourse = (req, res) => {
     },
   );
 };
+
+exports.editCourse = (req, res) => {
+  Course.findById({ _id: req.params.id }, (err, course) => {
+      if (err){
+        console.log(err)}
+      else{
+          res.render('editCourse', {
+          title: 'Edit',
+          course
+        });
+      }
+  });
+}; 
+
+exports.updateCourse = (req, res) => {
+  Course.update({_id: req.params.id}, req.body, (err) => {
+    if (err){
+      console.log(err);
+    }
+    else {
+      res.redirect('/instructor');
+    }
+  });
+};

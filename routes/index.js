@@ -21,6 +21,10 @@ router.get('register')
 //Delete a course.
 router.get('/instructor/delete/:id', instructorController.deleteCourse);
 
+//Edit a course.
+router.get('/instructor/edit/:id', instructorController.editCourse);
+router.post('/instructor/edit/:id', instructorController.updateCourse);
+
 //Add a new course
 router.get('/add', instructorController.addCourse)
 router.post('/add', instructorController.createCourse)
