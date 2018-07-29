@@ -10,6 +10,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
 
+const passport = require('passport');
+const session = require('express-session');
+
+const localStrategy = require('passport-local').Strategy;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -36,6 +40,21 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:  true}));
 
+//session and initialize passport. 
+app.use(session({
+  secret: process.env.SECRET,
+  resave: true,
+  saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User = require('./models/User');
+passport.use(User.createStrategy());
+
+//Read/write user login and registration info to mongo db.
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser()); 
 
 //All staic content like images, CSS, JS goes in public. 
 app.use(express.static(path.join(__dirname, 'public')));
