@@ -46,5 +46,8 @@ router.get('/logout', (req, res) => {
 router.get('/google', authController.googlePre);
 router.get('/google/callback', authController.googlePost);
 
+router.get('/twitter', authController.twitterPre);
+router.get('/twitter/callback', authController.twitterPost);
+
 //export the router so other files can use it.
 module.exports = router;
