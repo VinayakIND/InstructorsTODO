@@ -7,28 +7,32 @@ exports.registerForm = (req, res) => {
     warning: '',
     user: req.user,
   });
-};  
+};
 
 exports.register = (req, res, next) => {
   const user = new User({ username: req.body.username });
 
   User.register(user, req.body.password, (err, account) => {
     if (err) {
+      // needed to say 'return' below otherwise node will complain that headers already sent.
       return res.render('register', {
         title: 'Register',
         warning: 'Sorry, that username is already taken.  Try again.',
         user: req.user,
+        
       });
     }
     else {
       next();
+      return;
     }
-});
+ });
 };
 
 exports.loginForm = (req, res) => {
   const messages = req.session.messages || [];
 
+  // clear session message
   req.session.messages = [];
 
   res.render('login', {
@@ -38,16 +42,3 @@ exports.loginForm = (req, res) => {
   });
 };
 
-exports.getUsers = (req, res) => {
-  User.find((err, users) => {
-    if (err) {
-      res.render('error');
-    } else {
-      res.render('users', {
-        title: 'All Users',
-        users,
-        user: req.user,
-      });
-    }
-  });
-};

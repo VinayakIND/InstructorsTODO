@@ -1,7 +1,6 @@
 const Course = require('../models/Course');
 
 exports.instructor = async (req, res) => {
-    // use game model to query db for game data
     const courses = await Course.find().sort({ title: 'asc' });
   
     res.render('instructor', {
@@ -31,7 +30,7 @@ exports.getCourses = (req, res) => {
         title: 'Instructors - Courses',
         message: 'Here is the list of all the courses: ',
         courses,
-        //user: req.user,
+        user: req.user,
       });
     }
   });

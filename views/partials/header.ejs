@@ -251,14 +251,18 @@
                       </li>
                       <!-- User Account: style can be found in dropdown.less -->
                       <li role="presentation"><a href="/" class="active">Home</a></li>
-                      <li role="presentation"><a href="#">About Me</a></li>
-                      <li role="presentation"><a href="#">Services</a></li>
                       <li role="presentation"><a href="/courses">Courses</a></li>
-                      <li role="presentation"><a href="/add">Add Course</a></li>
-                      <li role="presentation"><a href="/instructor">Instructor</a></li>
-                      <li role="presentation"><a href="/register">Register</a></li>
-                      <li role="presentation"><a href="/login">Login</a></li>
-                      <li role="presentation"><a href="/logout">Logout</a></li>
+                      <% if (user) { %>
+                        <li role="presentation"><a href="/add">Add Course</a></li>
+                        <li role="presentation"><a href="/instructor">Instructor</a></li>
+                      <% } %>
+                      <% if (!user) { %>
+                        <li role="presentation"><a href="/register">Register</a></li>
+                        <li role="presentation"><a href="/login">Login</a></li>
+                      <% } %>
+                      <% if (user) { %>  
+                        <li role="presentation"><a href="/logout">Logout</a></li>
+                      <% } %>
                       <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                           <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>

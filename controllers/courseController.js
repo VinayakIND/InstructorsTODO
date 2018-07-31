@@ -5,6 +5,7 @@ const Course = require('../models/Course');
 exports.homePage = (req, res, next) => {
     res.render('index', { title: 'Instructors TO DO App',
                           message: 'Welcome to the Instructors TO DO list web application.',
+                          user: req.user,
    });
 };
 
@@ -18,7 +19,7 @@ exports.getCourses = (req, res) => {
         title: 'Courses',
         message: 'Here is the list of all the courses: ',
         courses,
-        //user: req.user,
+        user: req.user,
       });
     }
   });
