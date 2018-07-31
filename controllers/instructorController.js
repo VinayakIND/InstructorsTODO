@@ -63,7 +63,9 @@ exports.editCourse = (req, res) => {
       else{
           res.render('editCourse', {
           title: 'Edit',
-          course
+          course,
+          user: req.user,
+  
         });
       }
   });
