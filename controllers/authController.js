@@ -33,10 +33,9 @@ exports.googlePost = passport.authenticate('google', {
 
 exports.twitterPre = passport.authenticate('twitter');
 
-exports.twitterPost = ('/twitter/callback', 
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect to instructor page.
-    res.redirect('/instructor');
-  });
+exports.twitterPost = passport.authenticate('twitter', { 
+  successRedirect: '/instructor',
+  failureRedirect: '/login', 
+  }
+);
 
