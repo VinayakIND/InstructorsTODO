@@ -17,16 +17,18 @@ exports.register = (req, res, next) => {
 
   User.register(user, req.body.password, (err, account) => {
     if (err) {
-      return res.render('register', {
+      res.render('register', {
         title: 'Register',
         warning: 'Sorry, that username is already taken.  Try again.',
         user: req.user,
         
       });
-    }
-    else {
-      next();
       return;
+    }
+    //next();
+    //return;
+    else{
+      res.redirect('/login');
     }
  });
 };
