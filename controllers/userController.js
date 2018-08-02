@@ -1,6 +1,8 @@
+//Import the required modules.
 const passport = require('passport');
 const User = require('../models/User');
 
+//Direct the user to the registeration page.
 exports.registerForm = (req, res) => {
   res.render('register', {
     title: 'Register',
@@ -9,12 +11,12 @@ exports.registerForm = (req, res) => {
   });
 };
 
+//This method allows the user to register using post request.
 exports.register = (req, res, next) => {
   const user = new User({ username: req.body.username });
 
   User.register(user, req.body.password, (err, account) => {
     if (err) {
-      // needed to say 'return' below otherwise node will complain that headers already sent.
       return res.render('register', {
         title: 'Register',
         warning: 'Sorry, that username is already taken.  Try again.',
@@ -29,6 +31,7 @@ exports.register = (req, res, next) => {
  });
 };
 
+//THis method allows the user to login.
 exports.loginForm = (req, res) => {
   const messages = req.session.messages || [];
 

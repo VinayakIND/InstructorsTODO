@@ -1,5 +1,4 @@
 const Course = require('../models/Course');
-//const url = require('url');
 
 /* Return home page with the title and the content */
 exports.homePage = (req, res, next) => {

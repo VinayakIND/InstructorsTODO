@@ -112,7 +112,7 @@ module.exports = app;
 /* Use module */
 const TwitterStrategy = require('passport-twitter').Strategy; 
 
-
+//For twitter oauth
 passport.use(new TwitterStrategy({
   consumerKey: process.env.TWITTER_CONSUMER_KEY,
   consumerSecret: process.env.TWITTER_CONSUMER_SECRET,

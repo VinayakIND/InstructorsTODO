@@ -24,4 +24,5 @@ const courseSchema = new mongoose.Schema({
     }       
 });
 
+//export the mongoose's course schema so it can be used by the controllers. 
 module.exports = mongoose.model('Course', courseSchema);

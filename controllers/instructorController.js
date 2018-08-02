@@ -1,6 +1,8 @@
+//Import the required modules.
 const Course = require('../models/Course');
 var fs = require('fs');
 
+//Load instructor page with the courses. 
 exports.instructor = async (req, res) => {
     const courses = await Course.find().sort({ title: 'asc' });
   
@@ -11,6 +13,7 @@ exports.instructor = async (req, res) => {
     });
   };
 
+  //Create and save a course.
 exports.createCourse = (req, res) => {    
     try{
       filePath = '../instructorsTODO/public/uploads/java.txt'
@@ -44,8 +47,7 @@ exports.getCourses = (req, res) => {
   });
 };
 
-
-
+//Take the user to add course page only if he's authenticated.
 exports.addCourse = (req, res) => {
   res.render('addCourse', {
     title: 'Add Course',
@@ -53,6 +55,7 @@ exports.addCourse = (req, res) => {
   });
 };
 
+//method to allow user to delete the courses.
 exports.deleteCourse = (req, res) => {
   Course.remove(
     { _id: req.params.id },
@@ -66,6 +69,7 @@ exports.deleteCourse = (req, res) => {
   );
 };
 
+//This method allows the user to edit the courses.
 exports.editCourse = (req, res) => {
   Course.findById({ _id: req.params.id }, (err, course) => {
       if (err){
@@ -81,6 +85,7 @@ exports.editCourse = (req, res) => {
   });
 }; 
 
+//This method redirects the user to the appropriate page once they've edited the course. 
 exports.updateCourse = (req, res) => {
   Course.update({_id: req.params.id}, req.body, (err) => {
     if (err){
@@ -92,6 +97,7 @@ exports.updateCourse = (req, res) => {
   });
 };
 
+//This method allows the user to upload/add a text file (.txt).
 exports.fileUpload = function(req, res) {
   if (!req.files)
     return res.status(400).send('No files were uploaded.');
