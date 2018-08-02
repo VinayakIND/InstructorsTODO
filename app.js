@@ -10,6 +10,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
 
+//For file upload 
+const fileUpload = require('express-fileupload');
+//var multer = require('multer');
+
 const passport = require('passport');
 const session = require('express-session');
 
@@ -48,6 +52,9 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+//For file upload.
+app.use(fileUpload(({ safeFileNames: true, preserveExtension: true })));
 
 const User = require('./models/User');
 passport.use(User.createStrategy());
@@ -117,5 +124,12 @@ function(token, tokenSecret, profile, cb) {
     (err,user) => done(err,user));
 }
 ));
+
+//For file upload
+/*app.use(multer({ dest: './uploads/',
+  rename: function (fieldname, filename) {
+    return filename;
+  },
+ }));*/
 
 

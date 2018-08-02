@@ -27,6 +27,9 @@ router.get('/instructor/delete/:id', instructorController.deleteCourse);
 router.get('/instructor/edit/:id', authController.isLoggedIn, instructorController.editCourse);
 router.post('/instructor/edit/:id', authController.isLoggedIn, instructorController.updateCourse);
 
+//Get image from mongodb and display it. 
+//router.get('/instructor/image/:id', instructorController.getImage);
+
 //Add a new course
 router.get('/add', authController.isLoggedIn, instructorController.addCourse)
 router.post('/add', authController.isLoggedIn, instructorController.createCourse)
@@ -48,6 +51,11 @@ router.get('/google/callback', authController.googlePost);
 
 router.get('/twitter', authController.twitterPre);
 router.get('/twitter/callback', authController.twitterPost);
+
+//For file upload.
+router.post('/upload', instructorController.fileUpload);
+
+
 
 //export the router so other files can use it.
 module.exports = router;

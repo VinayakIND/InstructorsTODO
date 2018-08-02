@@ -17,26 +17,31 @@
                     <form method="POST" action="/add" style=" color: white">
                         <div class="form-group">
                             <label for="name">Course Name</label>
-                            <input type="text" id="name" name="name" class="input-block" required>
+                            <input type="text" id="name" name="name" class="input-block" style="color: black" required>
                         </div>
 
                         <div class="form-group">
                             <label for="type">Type</label>
-                            <input type="text" id="type" name="type" class="input-block" required>
+                            <input type="text" id="type" name="type" class="input-block" style="color: black" required>
                         </div>
 
                         <div class="form-group">
                             <label for="languages">Language</label>
-                            <input type="text" id="languages" name="languages" class="input-block" required>
+                            <input type="text" id="languages" name="languages" class="input-block" style="color: black" required>
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <input type="text" id="status" name="status" class="input-block" required>
+                            <input type="text" id="status" name="status" class="input-block" style="color:black" required>
                         </div>
                         <div class="form-group">
                             <label for="rating">Rating</label>
-                            <input type="text" id="rating" name="rating" class="input-block" required>
+                            <input type="text" style="color:black" id="rating" name="rating" class="input-block" required>
                         </div>
+                        <div ref='uploadForm' id='uploadForm' encType="multipart/form-data">
+                            <label for="fileUpload">Upload Course Document</label>
+                            <input type="file" name="file" />
+                            <!--<input type='submit' value='Upload!' />-->
+                        </div>    
                         <button type="submit" class="btn-secondary btn-block" style="color: black">Add Course</button>
                     </form>
                 </div>

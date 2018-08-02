@@ -1,4 +1,5 @@
 const Course = require('../models/Course');
+var fs = require('fs');
 
 exports.instructor = async (req, res) => {
     const courses = await Course.find().sort({ title: 'asc' });
@@ -12,7 +13,10 @@ exports.instructor = async (req, res) => {
 
 exports.createCourse = (req, res) => {    
     try{
+      filePath = '../instructorsTODO/public/uploads/java.txt'
       const course = new Course(req.body);
+      course.file.data = fs.readFileSync(filePath);
+      course.file.contentType = 'string/txt';
       course.save();
       res.redirect('/instructor');
     } catch (err) {
@@ -26,6 +30,10 @@ exports.getCourses = (req, res) => {
     if (err) {
       res.render('error');
     } else {
+      //var imageblob = courses.file;
+      //var image = document.createElement('image');
+      //    image.src = 'data:image/png;base64,' + imageblob;
+      //    document.appendChild(image); 
       res.render('instructor', {
         title: 'Instructors - Courses',
         message: 'Here is the list of all the courses: ',
@@ -35,6 +43,8 @@ exports.getCourses = (req, res) => {
     }
   });
 };
+
+
 
 exports.addCourse = (req, res) => {
   res.render('addCourse', {
@@ -79,5 +89,22 @@ exports.updateCourse = (req, res) => {
     else {
       res.redirect('/instructor');
     }
+  });
+};
+
+exports.fileUpload = function(req, res) {
+  if (!req.files)
+    return res.status(400).send('No files were uploaded.');
+
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  let sampleFile = req.files.sampleFile;
+
+  // Use the mv() method to place the file somewhere on your server
+  sampleFile.mv('../public/uploads/filename.jpg', function(err) {
+    if (err)  
+      return res.status(500).send(err);
+
+    res.send('File uploaded!');
+    res.redirect('/instructor');
   });
 };

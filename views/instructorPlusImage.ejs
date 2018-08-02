@@ -5,7 +5,7 @@
     </h1>
     <p style="color: white; font-size: 25px"><%= message%></p>  
     <section>
-            <!--<style>
+            <style>
                     #myImg {
                         border-radius: 5px;
                         cursor: pointer;
@@ -92,7 +92,7 @@
                         }
                     }
                     </style>
-                -->    
+                    
             <div class="paper container">
                     
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="color: white; font-size: 20px">
@@ -120,7 +120,7 @@
                                         <td><%= courses[i].languages %></td>        
                                         <td><a href="/instructor/edit/<%= courses[i]._id %>">Edit</td>
                                         <td><a href="/instructor/delete/<%= courses[i]._id %>" onclick="return confirm('Are you sure you want to delete this?');">Delete</td>
-                                       <!-- <a href="/instructor/image/<%= courses[i]._id %>">Image</a><img id="myImg" src="#" alt="Image" style="width:100%;max-width:300px">
+                                        <a href="/instructor/image/<%= courses[i]._id %>">Image</a><img id="myImg" src="" alt="Image" style="width:100%;max-width:300px">
                                         <div id="myModal" class="modal">
                                             <span class="close">&times;</span>
                                             <img class="modal-content" id="img01">
@@ -148,7 +148,7 @@
                                                     modal.style.display = "none";
                                                 }
                                         </script>
-                                    -->     
+                                                
                                     </tr>
                                 <% } %>
                                 
