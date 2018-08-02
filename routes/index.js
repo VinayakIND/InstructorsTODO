@@ -24,8 +24,8 @@ router.get('register')
 router.get('/instructor/delete/:id', instructorController.deleteCourse);
 
 //Edit a course.
-router.get('/instructor/edit/:id', authController.isLoggedIn, instructorController.editCourse);
-router.post('/instructor/edit/:id', authController.isLoggedIn, instructorController.updateCourse);
+router.get('/edit/:id', authController.isLoggedIn, instructorController.editCourse);
+router.post('/edit/:id', authController.isLoggedIn, instructorController.updateCourse);
 
 //Get image from mongodb and display it. 
 //router.get('/instructor/image/:id', instructorController.getImage);
